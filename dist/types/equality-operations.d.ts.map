@@ -1,0 +1,1 @@
+{"version":3,"file":"equality-operations.d.ts","sourceRoot":"","sources":["../../src/types/equality-operations.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,kBAAkB,CAAC,CAAC;IACnC,MAAM,CAAC,EAAE,OAAO,CAAC,CAAC,CAAC,CAAC;IACpB,IAAI,CAAC,EAAE,OAAO,CAAC,CAAC,CAAC,CAAC;IAClB,GAAG,CAAC,EAAE,OAAO,CAAC,CAAC,CAAC,CAAC;CAClB"}
