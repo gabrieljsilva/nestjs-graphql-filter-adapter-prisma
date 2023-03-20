@@ -34,5 +34,32 @@ import { PrismaFilterAdapter } from '@gabrieljsilva/nestjs-graphql-filter-adapte
   providers: [],
 })
 export class AppModule {}
+```
 
+Then you can generate the queries using `GraphqlFilterService`: 
+
+```typescript
+import { Injectable } from '@nestjs/common';
+import { GraphqlFilterService } from '@gabrieljsilva/nestjs-graphql-filter';
+import { Prisma } from '@prisma/client';
+
+import { PrismaService } from '@prisma/module/prisma.service';
+import { UserFilters } from '../../../../domain/filterables';
+
+@Injectable()
+export class UserService {
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly graphqlFilterService: GraphqlFilterService,
+  ) {}
+
+  async getManyUsers(filters?: UserFilters) {
+    const findUsersFilters =
+      this.graphqlFilterService.getQuery<Prisma.UserWhereInput>(filters);
+
+    return this.prisma.user.findMany({
+      where: findUsersFilters,
+    });
+  }
+}
 ```
