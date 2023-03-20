@@ -1,6 +1,6 @@
 {
   "name": "@gabrieljsilva/nestjs-graphql-filter-adapter-prisma",
-  "version": "0.1.0-rc.0",
+  "version": "0.1.0-rc.1",
   "description": "Prisma adapter for nestjs graphql filters library",
   "author": "gabrieljsilva",
   "private": false,
