@@ -17,11 +17,12 @@ you must register the adapter in the filter module, as follows the code below.
 
 ```typescript
 import { Module } from '@nestjs/common';
+import { GraphqlFilterModule } from '@gabrieljsilva/nestjs-graphql-filter';
+import { PrismaFilterAdapter } from '@gabrieljsilva/nestjs-graphql-filter-adapter-prisma';
+
 import { PrismaModule } from '@prisma/module/prisma.module';
 import { UserModule } from './packages';
 import { GraphqlModule } from './infra/graphql';
-import { GraphqlFilterModule } from '@gabrieljsilva/nestjs-graphql-filter';
-import { PrismaFilterAdapter } from '@gabrieljsilva/nestjs-graphql-filter-adapter-prisma';
 
 @Module({
   imports: [
@@ -54,8 +55,7 @@ export class UserService {
   ) {}
 
   async getManyUsers(filters?: UserFilters) {
-    const findUsersFilters =
-      this.graphqlFilterService.getQuery<Prisma.UserWhereInput>(filters);
+    const findUsersFilters = this.graphqlFilterService.getQuery<Prisma.UserWhereInput>(filters);
 
     return this.prisma.user.findMany({
       where: findUsersFilters,
