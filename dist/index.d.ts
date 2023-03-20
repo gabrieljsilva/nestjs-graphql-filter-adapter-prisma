@@ -1,5 +1,5 @@
-import { FilterOperations } from './types';
 import { GraphqlFilterAdapter } from '@gabrieljsilva/nestjs-graphql-filter';
+import { FilterOperations } from './types';
 export declare class PrismaFilterAdapter implements GraphqlFilterAdapter {
     getQuery<Output = any, T = any>(filters: FilterOperations<T>): Output;
     private createEqualsQuery;

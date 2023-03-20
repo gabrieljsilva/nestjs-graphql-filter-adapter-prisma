@@ -1,29 +1,30 @@
-import * as R from 'ramda';
-import { EqualityOperations, FilterOperations } from './types';
 import { GraphqlFilterAdapter } from '@gabrieljsilva/nestjs-graphql-filter';
+
+import { EqualityOperations, FilterOperations } from './types';
+import { mergeObjects } from './utils';
 
 export class PrismaFilterAdapter implements GraphqlFilterAdapter {
   getQuery<Output = any, T = any>(filters: FilterOperations<T>): Output {
     let query = {};
 
     if (filters.equals) {
-      query = R.mergeAll([query, this.createEqualsQuery(filters.equals)]);
+      query = mergeObjects(query, this.createEqualsQuery(filters.equals));
     }
 
     if (filters.like) {
-      query = R.mergeAll([query, this.createLikeQuery(filters.like)]);
+      query = mergeObjects(query, this.createLikeQuery(filters.like));
     }
 
     if (filters.not) {
-      query = R.mergeAll([query, this.createNotQuery(filters.not)]);
+      query = mergeObjects(query, this.createNotQuery(filters.not));
     }
 
     if (filters.and) {
-      query = R.mergeAll([query, this.createAndQuery(filters.and)]);
+      query = mergeObjects(query, this.createAndQuery(filters.and));
     }
 
     if (filters.or) {
-      query = R.mergeAll([query, this.createOrQuery(filters.or)]);
+      query = mergeObjects(query, this.createOrQuery(filters.or));
     }
 
     return query as Output;
