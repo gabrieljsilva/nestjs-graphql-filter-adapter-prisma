@@ -20,7 +20,8 @@
     "prerelease": "npm version prerelease --preid=rc"
   },
   "dependencies": {
-    "@gabrieljsilva/nestjs-graphql-filter": "^0.0.1",
+    "@gabrieljsilva/nestjs-graphql-filter": "^0.1.0",
+    "@nestjs/graphql": "^11.0.4",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
